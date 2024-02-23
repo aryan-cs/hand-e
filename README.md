@@ -8,7 +8,7 @@ A robotic arm controlled via a Python script running on a microcontroller. Uses 
 
 ## Run the Visualization Script
 
-The implementation for the two-vector system (TVS) for single-camera depth perception is **coming soon**.
+The implementation of the two-vector system (TVS) for single-camera depth perception is **coming soon**.
 
 Clone the project
 
@@ -16,7 +16,7 @@ Clone the project
   git clone https://github.com/aryan-cs/hand-e.git
 ```
 
-Go to the project directory
+Navigate to the project directory
 
 ```bash
   cd hand-e
