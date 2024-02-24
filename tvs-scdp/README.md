@@ -1,5 +1,5 @@
 
-# Hand-E
+# Two-Vector System for Single Camera Depth Perception
 
 A robotic arm controlled via a Python script running on a microcontroller. Uses OpenCV & Mediapipe to visualize joints and uses trigonometric calculations for single-camera depth perception using pre-informed landmark nodes. Based on Tony Stark's Dum-E!
 
