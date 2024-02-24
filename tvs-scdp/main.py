@@ -118,7 +118,8 @@ with mp_hands.Hands(
         fps_start_time = fps_end_time
         return fps
     
-    def tooltip():
+    def tooltip(text):
+        toggle_info = text
         text_position_bottom_left = (20, hCam - 20)
         cv2.putText(image, toggle_info, text_position_bottom_left, cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 1,
                     cv2.LINE_AA)
@@ -156,8 +157,8 @@ with mp_hands.Hands(
                 draw_hands()
 
                 text = f"Index-Little Distance: {index_little():.2f} | " + \
-                    f"Index-Thumb Distance: {index_thumb():.2f} | " + \
-                    f"Distance to Camera: {index_distance():.2f}"
+                       f"Index-Thumb Distance: {index_thumb():.2f} | " + \
+                       f"Distance to Camera: {index_distance():.2f}"
 
                 data()
 
@@ -165,11 +166,9 @@ with mp_hands.Hands(
         if pose_detection and holistic_results.pose_landmarks: draw_pose()
 
         # Display the toggle info box in the bottom left corner with the same style
-        toggle_info = f"[H] Toggle Hand Detection | [P] Toggle Pose Detection | [SPACE] Exit | FPS: {int(fps())}"
-        
-        tooltip()
+        tooltip(f"[H] Toggle Hand Detection | [P] Toggle Pose Detection | [SPACE] Exit | FPS: {int(fps())}")
 
-        cv2.imshow('handy', image)
+        cv2.imshow('ahnd-e', image)
 
         # End video on spacebar press
         if cv2.waitKey(1) & 0xFF == ord(' '):
