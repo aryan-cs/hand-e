@@ -10,7 +10,7 @@ highlight_thickness = 3
 
 # Hand and pose detection flags
 hand_detection = True
-pose_detection = False
+pose_detection = True
 
 # Mediapipe hand landmark model
 mp_drawing = mp.solutions.drawing_utils
@@ -19,7 +19,7 @@ mp_hands = mp.solutions.hands
 mp_holistic = mp.solutions.holistic
 
 # Webcam setup
-wCam, hCam = 960, 540  # Increase width and height for larger size
+wCam, hCam = 1280, 720  # Increase width and height for larger size
 cam = cv2.VideoCapture(0)
 cam.set(3, wCam)
 cam.set(4, hCam)
@@ -36,7 +36,6 @@ with mp_hands.Hands(
         min_detection_confidence=0.5,
         min_tracking_confidence=0.5, max_num_hands=2) as hands, \
         mp_holistic.Holistic(
-        model_complexity=0,
         min_detection_confidence=0.5,
         min_tracking_confidence=0.5) as holistic:
 
@@ -132,19 +131,20 @@ with mp_hands.Hands(
         fps = 1 / (fps_end_time - fps_start_time)
         fps_start_time = fps_end_time
 
-        # Display the toggle info box in the bottom left corner with the same style
+        # Display the toggle info box in the bottom left corner with the same style as old text
         toggle_info = f"[H] Toggle Hand Detection | [P] Toggle Pose Detection | [SPACE] Exit | FPS: {int(fps)}"
         text_position_bottom_left = (20, hCam - 20)
         cv2.putText(image, toggle_info, text_position_bottom_left, cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 1,
                     cv2.LINE_AA)
 
-        # Add black background box with padding for the bottom text
+        # Add black background box with padding and rounded borders for the bottom text
         text_size_bottom_left = cv2.getTextSize(toggle_info, cv2.FONT_HERSHEY_DUPLEX, 0.5, 1)[0]
         box_padding_bottom_left = 10
         box_top_left_bottom_left = (text_position_bottom_left[0] - box_padding_bottom_left,
                                     text_position_bottom_left[1] - text_size_bottom_left[1] - box_padding_bottom_left)
         box_bottom_right_bottom_left = (text_position_bottom_left[0] + text_size_bottom_left[0] + box_padding_bottom_left,
-                                        text_position_bottom_left[1] + box_padding_bottom_left)
+                                        text_position_bottom_left[1] + box_padding_bottom_left
+        )
         cv2.rectangle(image, box_top_left_bottom_left, box_bottom_right_bottom_left, (0, 0, 0), -1, cv2.LINE_AA)
         cv2.rectangle(image, box_top_left_bottom_left, box_bottom_right_bottom_left, (255, 255, 255), 1, cv2.LINE_AA)
         cv2.putText(image, toggle_info, text_position_bottom_left, cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 1,
