@@ -42,6 +42,7 @@ def tooltip(text):
 while True:
 
     success, image = cam.read()
+    image = cv2.flip(image, 1)
     hands, image = detector.findHands(image)
 
     tooltip(f"[SPACE] Exit | FPS: {int(fps())}")
