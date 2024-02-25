@@ -3,7 +3,7 @@ import cv2
 import socket
 import time
 
-wCam, hCam = [1280, 720]
+wCam, hCam = [340, 180]
 cam = cv2.VideoCapture(0)
 cam.set(3, wCam)
 cam.set(4, hCam)
@@ -11,9 +11,10 @@ success, image = cam.read()
 h, w, _ = image.shape
 detector = HandDetector(detectionCon = 0.8, maxHands = 2)
 fps_start_time = 0
+PORT = 5052
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-serverAddressPort = ("127.0.0.1", 5052)
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) 
+serverAddressPort = ("127.0.0.1", PORT)
 
 def fps():
         global fps_start_time
@@ -57,5 +58,5 @@ while True:
 
         sock.sendto(str.encode(str(data)), serverAddressPort)
         
-    cv2.imshow("hand-e", image)
+    cv2.imshow("localhost:" + str(PORT), image)
     if cv2.waitKey(1) & 0xFF == ord(' '): break;
