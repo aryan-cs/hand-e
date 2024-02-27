@@ -30,8 +30,8 @@ public class HandTracking : MonoBehaviour
         float z0 = float.Parse(points[5 * 3 + 2]) - float.Parse(points[17 * 3 + 2]);
         float width_pix = Mathf.Sqrt(Mathf.Pow(x0, 2) + Mathf.Pow(y0, 2) + Mathf.Pow(z0, 2));
 
-        float z_hand = -0.5f * width_pix + 40.0f;
-        float hand_size = 50 / width_pix;
+        float z_hand = -0.5f * width_pix + 20.0f;
+        float hand_size = 35 / width_pix;
 
         wholeHand.transform.localScale = new Vector3(hand_size, hand_size, hand_size);
         wholeHand.transform.localPosition = new Vector3(0, 0, z_hand);
@@ -44,7 +44,7 @@ public class HandTracking : MonoBehaviour
             float z = float.Parse(points[i * 3 + 2]) / 25;
 
             handPoints[i].transform.localPosition = new Vector3(x, y, z);
-            handPoints[i].transform.localScale = new Vector3(0.5f / hand_size, 0.5f / hand_size, 0.5f / hand_size);
+            handPoints[i].transform.localScale = new Vector3(0.3f / hand_size, 0.3f / hand_size, 0.3f / hand_size);
 
         }
     }
