@@ -8,8 +8,11 @@ A robotic arm controlled via a Python script running on a microcontroller. Uses 
 
 The project was inspired by Tony Stark's Dum-E, an assistive robotic arm. Originally, the plan was to use OpenCV and Mediapipe in Python with the [**TVS**](https://github.com/aryan-cs/hand-e/tree/master/tvs-scdp#two-vector-system-for-single-camera-depth-perception) to relay information to an external microcontroller like an Arduino or RaspberryPi which controls servos. However, I quickly ran into issues with depth perception & the nature of the distance-dependent actuation. 
 
-In light of this, I'm currently working on engineering a solution that requires only one camera. I've created a port-based script which sends information gathered by OpenCV on Python to Unity which recreates the nodes & connections of the hand to make a digital hand capable of interacting with the virtual world.
+In light of this, I'm currently working on engineering a solution that requires only one camera. I've created a port-based script which sends information gathered by OpenCV on Python to Unity which recreates the nodes & connections of the hand to make a digital hand capable of interacting with the virtual world. This includes full xyz-axis manipulation as well as distance-independent scaling.
 
+| ![Interaction 2](https://lh3.googleusercontent.com/pw/ABLVV84hIRsn4nlld6xmNToIqx2rHR_R6gm1fgFN5x5421g2DBhCQLGuFomeDDR9VGBwSmXpXrszMlu2Fh-VaIou07RdcOudRpc-fyZRmJOmBWE_GBEDqUXmsCLBbN5njfY7sWXze07Bu86imwv9DZ-A9oFuVIEMyqw6eH_RkQGyGIYYVFH-ZlHmjXask5f26QAoakNF3RWehiA2ewoSXVGrup3gaXvGLsIOzZJG14pQhUAQI3KfGx1qwT8ET7ZNUbpF4N9wuYDZy4AODbllIT621FcsGJtaE26MOdTbHxCZVaG46uQgNERqS062P_YMR-CLYBAQHH1GZ-XVcWfZg3kp7bLztSnLR7YIewP5Y4od2rx78duqMzO_7cbSJbCii8krpdwv1aSv3eN_wMBmfucyQZH3J0V2TxY6m4kmFIeg8vlc9pHI9hd6DS2p6oV1Z4ONHf9iwaqf5MketJP7qdvmuX8iDpsEhVpkwwqdlI3aiFucadZ3HKl1s2QznaaFXDtE-5WjIA2p1FeBrnB_M0qzxDYa-zmvhSdVahNxfee5RTVcSEKLdavzumJq4tOl4VOxk_bOHCmo8WKfytuZddgTnq8RzxR7sELOeOlUXwnVDYUnnw3o96_MRZeFAK_kj7SNzPwikWP2WnlH1w4TUK-WBNgCAy79VtmO5_xWSgNElvC9aoWpsfyff6DBiJrYSut3H1IQFcgtYIQm1Px2wd9GKdXSRrs8TuwFuvzwyRG73DgQIChyk0mvWYAfsI7MNFnhmKJWTkLMxgrJPM6XC5X57zmTwQsktveUusvO-S20SQ7qucBp1AAjnts9Rea-oKf6vCbxpNv_VPy2wND12Gplm9KH6yiRbnWlGkxAD_fvvBE54yyIgnVfCsG3djsVJwLHj3b3kr3g8gfvTCcVI63mGKsJPz0cx_LK0jr0Tzmb98VDehning3yuhvVmumv3rXNhhj7vFRy--tvPkx5gZLHoQw4DjaURHuWuSpJyf0KFusAM_W7INsl2ipZuETzIZeZv78RBVWUQ9yZ5xF2zH2pFM96lCryM1-V5k5fpHiaJPjOjDbOa_8q2Tle7O3ks2zqhUTOaVnvjnC2ovKsU5QCaTwIVeagdx4qZbFdPwSiNAvzFEfJL-963MShh85UxQ8Sx0IIgi7yghYMD4i7fB_nTT3aEGTnjpH-pKvctLtH54eq8hU3as46191seaTfmKASPE8vdKgGEx_2n8FyqS5bSQbgRgNwyXkgxVzWLbIBHu6M=w400-h400-no?authuser=0&quot) | ![Interaction 2](https://lh3.googleusercontent.com/pw/ABLVV86bWnEbLc8aM3KXPHNrakY6jnoQ7xfkDUhq_zCx7493KbCCWvYqQISsn1Ysw5FIQzUAdOJzUFDO3ZzoulG6_vFPh2-dLvC-wMnRndgWFOoSs2kar9tGfy_qFTCQoPntR95A6WKanq4SumM3QBIEhrgLzl3eVWKDaVmx4LvRV059FEH2R8WpEQDd4kE51QvuAimrQcKW67FTdv40A4bi-JdfbEWVxlYMhhs_znT1c6BnTsc99XGhVbM9T1MD3PYKW-n7wVXerk7D4e8b8GNGF6eccm0owNkc43oLWF4lLG-Knzv5iGFSP6NjV4mjxz6tkU3QfSMa2Y03dZT64w113jvgYqOez23LBY-vxr-ztVlEIpMwXAbbSIDG37eCDygpL7ZLVXaXDZj9519usuOPND8lAvJ_J8UyD-F2cjyTXNdxmwiyNiC_vWZxOk-SC1YRqcfmuhFHg6vgMA-PXpje8E-nELtucjf1PipzKCcT8uEQbfF50Nj1Zd-Kjy_0swRmxX0tw_T7mYLnXvpSNQLn7b9tyzT-qsEPxkw14AbZHcY_e36aX6WYF3BnplYooQd7M5eRo7fN3Hqx_DGYVmsf913RZfS5rsj60JVaKWGZyE0oFP2szHL3KVCWJVXYZG81vNEpBK1XNnflfSGAtYduJ5qxUfTYA_MpHcn1S0wUsB9Iix1Mz6AEz5CZUpEulyayKgmhZcEGfj8mXaDECHr4ye0mt2otS9vXyDY1x6CJrSv60uuIHMhwswQ8Nb49odrtjTeMPgxKsaqTOfMxCHPRSG0-eY59vdt0RYphHF_dVFaG8QXmiyrlz29hILmEwrUyGZ2FYkfqVuLzBjr0gjzyK791e8uWR8Fus8qRD_at41X7eu-bcVV9Wg-rVG7qfp1PnfmAAivd76Up_o9-VQqg_8S14y1Pv3aANugZjAXI68s1Dc2RgHg95BRtkG9KUP10lFhnxDdAoWZ86feV-sWn-brlVdT0pemtKMC4In9UGU8rFQENil1J4eL714jI2LYFRxNeq3gAcCjEO2IIjbBGurKRL5-F9v5u-zntAjkxgPnFqHec-dlvFvFImkDjYEeYRgOSp09-yPP3LmRtm0iGAxoM1Y4XUQ-mK0BoYXsiw8GnrCtScIem6_s4OFA81IYnohDwlP7zZgB4LhtjSq-yqiUEBMidgjWt7Z3FV5T3VAntavjjhF3rBfke1gB1cMb9bzK1Hnh3KtSVdiNw2vR9WIoG2Jnxh00npbefEc_0O2Lv=w3500-h400-no?authuser=0&quot) |
+|     :---:      |     :---:      |
+| Open Palm | Balled Fist |
 
 ## Authors
 
@@ -31,7 +34,10 @@ Where C represents the camera, A represents the index finger, and b represents t
 
 Other possible contributions include...
 - Adding documentation
+- Spelling or grammar errors
 - Finding a way to implement the TVS in `tvs.py`
 - Optimizing code for efficiency
-- Implementing a second camera for depth perception
+- Implementing a second camera for depth perception in `tvs.py`
+- Implementing a Unity asset for the hand
 - Anything meaningful you believe the project could benefit from!
+- 
